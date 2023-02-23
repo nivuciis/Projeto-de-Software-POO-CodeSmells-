@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class App {
@@ -7,23 +6,6 @@ public class App {
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
         Aluno mat = new Aluno();
         while(true){
-            System.out.println("-------------- Bem vindo ao sistema de cadastro! -------------");
-            System.out.println();
-            System.out.println("-----> MENU <-----");
-            System.out.println();
-            System.out.println("Opções:\n"
-                + "\n 1.Matricular um aluno no sistema." 
-                + "\n 2.Remover um aluno." //NAO REFEITO AINDA
-                + "\n 3.Adicionar Nota." //NAO REFEITO AINDA
-                + "\n 4.Alterar Nota." //NAO REFEITO AINDA 
-                + "\n 5.Adicionar Faltas." //NAO REFEITO AINDA 
-                + "\n 6.Alterar dados de um aluno." //NAO REFEITO AINDA 
-                + "\n 7.Mostrar informações de um aluno." //NAO REFEITO AINDA
-                + "\n 8.Alterar Faltas." //NAO REFEITO AINDA
-                + "\n 9.Adicionar Disciplinas." //NAO REFEITO AINDA
-                + "\n 10.Remover Disciplinas." //NAO REFEITO AINDA
-                + "\n 0.Sair\n");
-            Scanner input = new Scanner(System.in);
             Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Alterar Faltas", "Adicionar Notas", "Adicionar Faltas", "Adicionar Disciplinas", "Remover Disciplinas"};
             
             Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -34,9 +16,20 @@ public class App {
                     novoAluno.setMatricula();
                     novoAluno.setEmail();
                     Alunos.add(novoAluno);
+                    JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
                 }else if(op == "Remover Aluno")
                 {
-                    break;
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos = deleteAluno(Alunos,i);
+                            JOptionPane.showMessageDialog(null, "Aluno Excluído com sucesso.");
+                            break;
+                        }
+                    }    
 
                 }else if(op == "Adicionar Notas")
                 {
@@ -73,7 +66,16 @@ public class App {
 
                 }else if(op == "Adicionar Disciplinas")
                 {
-                    break;
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos.get(i).setDici();
+                            break;
+                        }
+                    }    
 
                 }else if(op == "Remover Disciplinas")
                 {
@@ -86,6 +88,11 @@ public class App {
                 }
             }
         }
+
+    public static ArrayList<Aluno> deleteAluno(ArrayList<Aluno> Alunos,int aluno_remover){
+        Alunos.remove(aluno_remover);
+        return Alunos;
+    }
 }
 
 

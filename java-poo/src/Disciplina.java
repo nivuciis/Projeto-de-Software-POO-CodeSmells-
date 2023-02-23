@@ -1,32 +1,29 @@
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 public class Disciplina {
     private String nomedisciplina;
-    private Double nota;
-    private int faltas;
+    private String nota;
+    private String faltas;
 
 
     public String getNomeDisciplina(){return this.nomedisciplina;}
-    public Double getNota(){return this.nota;}
-    public int getFaltas(){return this.faltas;}
+    public String getNota(){return this.nota;}
+    public String getFaltas(){return this.faltas;}
 
 Scanner input = new Scanner(System.in);
 
     public void setNomeDisciplina(){
-        System.out.println("-----------------------");
-        System.out.println("Digite o NOME da disciplina:");
-        this.nomedisciplina = input.next();
-    }
+        this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
 
+    }
     public void setNota(){
-        System.out.println("-----------------------");
-        System.out.println("Digite a nota da disciplina:");
-        this.nota = input.nextDouble();
+        this.nota = JOptionPane.showInputDialog("Digite a nota da disciplina:");
     }
 
     public void setFaltas(){
-        System.out.println("-----------------------");
-        System.out.println("Digite o Numero de faltas:");
-        this.faltas = input.nextInt();
+
+        this.faltas = JOptionPane.showInputDialog("Digite o número de faltas:");
     }
 
 

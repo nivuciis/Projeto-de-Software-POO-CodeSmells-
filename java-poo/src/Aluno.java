@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Aluno {
@@ -7,45 +6,33 @@ public class Aluno {
     private String cpf;
     private String matricula;
     private String email;
-    private ArrayList<Disciplina> discipinas;
+    private ArrayList<Disciplina> disciplinas;
 
 
     public String getNome(){return this.nome;}
     public String getCpf(){return this.cpf;}
-    public Long getMatricula(){return this.matricula;}
+    public String getMatricula(){return this.matricula;}
     public String getEmail(){return this.email;}
 
-    Scanner input = new Scanner(System.in);
-    
-    public void setNome(){
-        this.nome = JOptionPane.showInputDialog("Nome do aluno");
-    }
-
-    public void setCPF(){
-
-        this.cpf = JOptionPane.showInputDialog("CPF");
-    }
-
-    public void setMatricula(){
-        this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");
-    }
-
-    public void setEmail(){
-        this.email = JOptionPane.showInputDialog("Email do aluno");
-    }
-
+    public void setNome(){this.nome = JOptionPane.showInputDialog("Nome do aluno");}
+    public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
+    public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
+    public void setEmail(){this.email = JOptionPane.showInputDialog("Email do aluno");}
     public void setDici(){
-        System.out.println("-----------------------");
-        System.out.println("Digite o NÚMERO DE DISCIPLINAS desse aluno:");
-        int num_dici=input.nextInt();
-        Disciplina disciplina= new Disciplina();
-        for(int i=0;i<num_dici;i++){
-            disciplina.setNomeDisciplina();
-            disciplina.setNota();
-            disciplina.setFaltas();
-            this.discipinas.add(disciplina);
-        }
         
+    Object[] options = {1,2,3,4,5,6,7,8,9};
+    Object op = JOptionPane.showInputDialog(null,"Escolha quantas disciplinas deseja cadastrar:","Opções",JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+    Disciplina disciplina= new Disciplina();
+    ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+
+    int opint = op.hashCode();
+    for(int i=0;i<opint;i++){
+        disciplina.setNomeDisciplina();
+        disciplina.setNota();
+        disciplina.setFaltas();
+        disciplinas.add(disciplina);
+    }
+    this.disciplinas = disciplinas;
     }
 
     Object ListagemAlunos(ArrayList<Aluno> listAlun)
@@ -64,7 +51,14 @@ public class Aluno {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 
                 "\nCPF: " + this.cpf +
                 "\nMatricula: " + this.matricula +
-                "\nEmail: " + this.email );
+                "\nEmail: " + this.email);
+        
+        for(int i=0;i<this.disciplinas.size();i++){
+            int aux=i+1;
+            JOptionPane.showMessageDialog(null,"Disciplina "+aux+": "+this.disciplinas.get(i).getNomeDisciplina() +
+            "\nNúmero de faltas: " + this.disciplinas.get(i).getFaltas() +
+            "\nNota: " + this.disciplinas.get(i).getNota());
+        }
     }
 }
 
