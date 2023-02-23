@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class App {
     public static void main(String[] args){
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
-
-        System.out.println("-------------- Bem vindo ao sistema de cadastro! -------------");
-        System.out.println();
         while(true){
+            System.out.println("-------------- Bem vindo ao sistema de cadastro! -------------");
+            System.out.println();
             System.out.println("-----> MENU <-----");
             System.out.println();
             System.out.println("Opções:\n"
@@ -23,21 +21,10 @@ public class App {
                 + "\n 9.Adicionar Disciplinas." //NAO REFEITO AINDA
                 + "\n 10.Remover Disciplinas." //NAO REFEITO AINDA
                 + "\n 0.Sair\n");
-            Scanner opt = new Scanner(System.in);
+            Scanner input = new Scanner(System.in);
             System.out.println("Digite uma opção (Nº INTEIRO): ");
-            String op="";
-            while(op==""){
-                op=opt.nextLine();
-                if(op==""){
-                    System.out.println();
-                    System.out.println("---NECESSARIO DIGITAR ALGUMA OPÇAO---");
-                    System.out.println();
-                }
-            }
-            
-            if(isInteger(op)){
-                if(Integer.parseInt(op) == 1) // OPCAO MATRICULAR UM ALUNO
-                {
+            int op = input.nextInt();
+            if(op==1){ // 1.Matricular um aluno no sistema."
                     Aluno novoAluno = new Aluno();
                     System.out.println();
                     System.out.println("-> OPÇÃO ATUAL : 1) MATRICULAR UM ALUNO NO SISTEMA <-");
@@ -51,15 +38,60 @@ public class App {
                     System.out.println("-----> DADOS SALVOS COM SUCESSO!! <-----");
                     System.out.println();
 
-                }else if(Integer.parseInt(op) == 0){
+                }else if(op == 2)
+                {
                     break;
 
+                }else if(op == 3)
+                {
+                    break;
+
+                }else if(op == 4)
+                {
+                    break;
+
+                }else if(op == 5)
+                {
+                    break;
+
+                }else if(op == 6)
+                {
+                    break;
+
+                }else if(op == 7) //7.Mostrar informações de um aluno."
+                {
+                    if(Alunos.isEmpty()){
+                        System.out.println();
+                        System.out.println("-------------------------------");
+                        System.out.println("Realize o cadastro primeiro.");
+                        System.out.println("-------------------------------");
+                        System.out.println();
+                    }else{
+                        System.out.println();
+                        System.out.println("-> OPÇÃO ATUAL : 7) MOSTRAR INFORMACOES DE UM ALUNO <-");
+                        System.out.println();
+                        System.out.println("----ALUNOS CADASTRADOS:----");
+                        System.out.println();
+                    }        
+                }else if(op== 8)
+                {
+                    break;
+
+                }else if(op == 9)
+                {
+                    break;
+
+                }else if(op == 10)
+                {
+                    break;
                 }
-            }else{break;}
+
+                else if(op == 0)
+                {
+                    break;
+                }
+            }
         }
-    }
-private static boolean isInteger(String str) 
-    {
-        return str != null && str.matches("[0-9]*");
-    }
 }
+
+

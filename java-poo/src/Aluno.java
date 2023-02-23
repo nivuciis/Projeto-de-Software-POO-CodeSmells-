@@ -15,6 +15,7 @@ public class Aluno {
     public String getEmail(){return this.email;}
 
     Scanner input = new Scanner(System.in);
+    
     public void setNome(){
         System.out.println("-----------------------");
         System.out.println("Digite o NOME do aluno:");
