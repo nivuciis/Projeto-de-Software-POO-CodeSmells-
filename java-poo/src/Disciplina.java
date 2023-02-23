@@ -29,11 +29,6 @@ Scanner input = new Scanner(System.in);
         this.faltas = input.nextInt();
     }
 
-    public void addAluno(){
-        setNomeDisciplina();
-        setNota();
-        setFaltas();
-    }
 
 
 }

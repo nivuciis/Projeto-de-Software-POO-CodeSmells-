@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class App {
     public static void main(String[] args){
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
+        Aluno mat = new Aluno();
         while(true){
             System.out.println("-------------- Bem vindo ao sistema de cadastro! -------------");
             System.out.println();
@@ -22,71 +24,63 @@ public class App {
                 + "\n 10.Remover Disciplinas." //NAO REFEITO AINDA
                 + "\n 0.Sair\n");
             Scanner input = new Scanner(System.in);
-            System.out.println("Digite uma opção (Nº INTEIRO): ");
-            int op = input.nextInt();
-            if(op==1){ // 1.Matricular um aluno no sistema."
+            Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Alterar Faltas", "Adicionar Notas", "Adicionar Faltas", "Adicionar Disciplinas", "Remover Disciplinas"};
+            
+            Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            if(op=="Matricular Aluno"){ // 1.Matricular um aluno no sistema."
                     Aluno novoAluno = new Aluno();
-                    System.out.println();
-                    System.out.println("-> OPÇÃO ATUAL : 1) MATRICULAR UM ALUNO NO SISTEMA <-");
-                    System.out.println();
                     novoAluno.setNome();
                     novoAluno.setCPF();
                     novoAluno.setMatricula();
                     novoAluno.setEmail();
                     Alunos.add(novoAluno);
-                    System.out.println();
-                    System.out.println("-----> DADOS SALVOS COM SUCESSO!! <-----");
-                    System.out.println();
-
-                }else if(op == 2)
+                }else if(op == "Remover Aluno")
                 {
                     break;
 
-                }else if(op == 3)
+                }else if(op == "Adicionar Notas")
                 {
                     break;
 
-                }else if(op == 4)
+                }else if(op == "Alterar Nota")
                 {
                     break;
 
-                }else if(op == 5)
+                }else if(op == "Adicionar Faltas")
                 {
                     break;
 
-                }else if(op == 6)
+                }else if(op == "Alterar Dados")
                 {
                     break;
 
-                }else if(op == 7) //7.Mostrar informações de um aluno."
+                }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
                 {
-                    if(Alunos.isEmpty()){
-                        System.out.println();
-                        System.out.println("-------------------------------");
-                        System.out.println("Realize o cadastro primeiro.");
-                        System.out.println("-------------------------------");
-                        System.out.println();
-                    }else{
-                        System.out.println();
-                        System.out.println("-> OPÇÃO ATUAL : 7) MOSTRAR INFORMACOES DE UM ALUNO <-");
-                        System.out.println();
-                        System.out.println("----ALUNOS CADASTRADOS:----");
-                        System.out.println();
-                    }        
-                }else if(op== 8)
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos.get(i).MostrarInfo();
+                            break;
+                        }
+                    }    
+
+                }else if(op== "Alterar Faltas")
                 {
                     break;
 
-                }else if(op == 9)
+                }else if(op == "Adicionar Disciplinas")
                 {
                     break;
 
-                }else if(op == 10)
+                }else if(op == "Remover Disciplinas")
                 {
                     break;
                 }
 
-                else if(op == 0)
+                else if(op == null)
                 {
                     break;
                 }
