@@ -11,8 +11,6 @@ public class Disciplina {
     public String getNota(){return this.nota;}
     public String getFaltas(){return this.faltas;}
 
-Scanner input = new Scanner(System.in);
-
     public void setNomeDisciplina(){
         this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
 
@@ -24,6 +22,7 @@ Scanner input = new Scanner(System.in);
     public void setFaltas(){
 
         this.faltas = JOptionPane.showInputDialog("Digite o número de faltas:");
+
     }
 
 
