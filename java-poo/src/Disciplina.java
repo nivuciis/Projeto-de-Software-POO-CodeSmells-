@@ -1,18 +1,19 @@
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 public class Disciplina {
     private String nomedisciplina;
+    private String nomeprofessor;
     private String nota;
-    private String faltas;
 
 
     public String getNomeDisciplina(){return this.nomedisciplina;}
     public String getNota(){return this.nota;}
-    public String getFaltas(){return this.faltas;}
+    public String getNomeprofessor(){return this.nomeprofessor;}
 
 Scanner input = new Scanner(System.in);
-
+    
     public void setNomeDisciplina(){
         this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
 
@@ -21,11 +22,7 @@ Scanner input = new Scanner(System.in);
         this.nota = JOptionPane.showInputDialog("Digite a nota da disciplina:");
     }
 
-    public void setFaltas(){
-
-        this.faltas = JOptionPane.showInputDialog("Digite o número de faltas:");
+    public void setNomeprofessor(){
+        this.nomeprofessor="NENHUM";
     }
-
-
-
 }

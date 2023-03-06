@@ -4,9 +4,10 @@ import javax.swing.JOptionPane;
 public class App {
     public static void main(String[] args){
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
+        ArrayList<Professor> Professores = new ArrayList<Professor>();
         Aluno mat = new Aluno();
         while(true){
-            Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Alterar Faltas", "Adicionar Notas", "Adicionar Faltas", "Adicionar Disciplinas", "Remover Disciplinas"};
+            Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Adicionar Notas", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
             
             Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             if(op=="Matricular Aluno"){ // 1.Matricular um aluno no sistema."
@@ -17,75 +18,82 @@ public class App {
                     novoAluno.setEmail();
                     Alunos.add(novoAluno);
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
-                }else if(op == "Remover Aluno")
+            }else if(op == "Remover Aluno")
+            {
+                Object opt_alunos = mat.ListagemAlunos(Alunos);
+                for(int i = 0; i < Alunos.size(); i++)
                 {
-                    Object opt_alunos = mat.ListagemAlunos(Alunos);
-                    for(int i = 0; i < Alunos.size(); i++)
+                    if(opt_alunos == null) {break;}
+                    else if(opt_alunos == Alunos.get(i).getNome())
                     {
-                        if(opt_alunos == null) {break;}
-                        else if(opt_alunos == Alunos.get(i).getNome())
-                        {
-                            Alunos = deleteAluno(Alunos,i);
-                            JOptionPane.showMessageDialog(null, "Aluno Excluído com sucesso.");
-                            break;
-                        }
-                    }    
+                        Alunos = deleteAluno(Alunos,i);
+                        JOptionPane.showMessageDialog(null, "Aluno Excluído com sucesso.");
+                        break;
+                    }
+                }    
 
-                }else if(op == "Adicionar Notas")
-                {
-                    break;
+            }else if(op == "Adicionar Notas")
+            {
+                break;
 
-                }else if(op == "Alterar Nota")
-                {
-                    break;
+            }else if(op == "Alterar Nota")
+            {
+                break;
 
-                }else if(op == "Adicionar Faltas")
-                {
-                    break;
+            }else if(op == "Adicionar Professor")
+            {
+                Professor novoProfessor = new Professor();
+                novoProfessor.setNome();
+                novoProfessor.setCPF();
+                novoProfessor.setEmail();
+                novoProfessor.setSalario();
+                novoProfessor.setFormacaoAcademica();
+                Professores.add(novoProfessor);
+                JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso.");
 
-                }else if(op == "Alterar Dados")
-                {
-                    break;
+            }else if(op == "Alterar Dados")
+            {
+                break;
 
-                }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
+            }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
+            {
+                Object opt_alunos = mat.ListagemAlunos(Alunos);
+                for(int i = 0; i < Alunos.size(); i++)
                 {
-                    Object opt_alunos = mat.ListagemAlunos(Alunos);
-                    for(int i = 0; i < Alunos.size(); i++)
+                    if(opt_alunos == null) {break;}
+                    else if(opt_alunos == Alunos.get(i).getNome())
                     {
-                        if(opt_alunos == null) {break;}
-                        else if(opt_alunos == Alunos.get(i).getNome())
-                        {
-                            Alunos.get(i).MostrarInfo();
-                            break;
-                        }
-                    }    
+                        Alunos.get(i).MostrarInfo();
+                        break;
+                    }
+                }    
 
-                }else if(op== "Alterar Faltas")
-                {
-                    break;
+            }else if(op== "Undo/redo")
+            {
+                break;
 
-                }else if(op == "Adicionar Disciplinas")
+            }else if(op == "Adicionar Disciplinas")
+            {
+                Object opt_alunos = mat.ListagemAlunos(Alunos);
+                for(int i = 0; i < Alunos.size(); i++)
                 {
-                    Object opt_alunos = mat.ListagemAlunos(Alunos);
-                    for(int i = 0; i < Alunos.size(); i++)
+                    if(opt_alunos == null) {break;}
+                    else if(opt_alunos == Alunos.get(i).getNome())
                     {
-                        if(opt_alunos == null) {break;}
-                        else if(opt_alunos == Alunos.get(i).getNome())
-                        {
-                            Alunos.get(i).setDici();
-                            break;
-                        }
-                    }    
+                        Alunos.get(i).setDici();
+                        break;
+                    }
+                }    
 
-                }else if(op == "Remover Disciplinas")
-                {
-                    break;
-                }
+            }else if(op == "Remover Disciplinas")
+            {
+                break;
+            }
 
-                else if(op == null)
-                {
-                    break;
-                }
+            else if(op == null)
+            {
+                break;
+            }
             }
         }
 
