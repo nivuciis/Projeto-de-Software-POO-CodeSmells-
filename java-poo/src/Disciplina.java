@@ -13,7 +13,7 @@ public class Disciplina {
     public String getNomeprofessor(){return this.nomeprofessor;}
 
 Scanner input = new Scanner(System.in);
-    
+
     public void setNomeDisciplina(){
         this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
 
@@ -24,5 +24,6 @@ Scanner input = new Scanner(System.in);
 
     public void setNomeprofessor(){
         this.nomeprofessor="NENHUM";
-    }
+
+}
 }

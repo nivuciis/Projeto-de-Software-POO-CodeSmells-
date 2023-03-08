@@ -68,7 +68,7 @@ public class App {
                     }
                 }    
 
-            }else if(op== "Undo/redo")
+            }else if(op== "Undo/redo")3
             {
                 break;
 
@@ -86,10 +86,28 @@ public class App {
                 }    
 
             }else if(op == "Remover Disciplinas")
-            {
-                break;
-            }
-
+                {
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)//navegar pelos alunos
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            ArrayList<Disciplina> d  = Alunos.get(i).getDici(); 
+                            Object opt_d = Alunos.get(i).ListagemDici(d);
+                            for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                            {
+                                if(opt_d == null) {break;}
+                                else if(opt_d == d.get(j).getNomeDisciplina())
+                                {
+                                    d.remove(j);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
             else if(op == null)
             {
                 break;

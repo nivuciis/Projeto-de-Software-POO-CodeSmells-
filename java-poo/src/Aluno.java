@@ -1,15 +1,22 @@
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+
 public class Aluno extends Pessoa{
-    
+
     private String matricula;
-    private ArrayList<Disciplina> disciplinas;
+    public ArrayList<Disciplina> disciplinas;
     private String curso;
 
 
     public String getMatricula(){return this.matricula;}
+
     
+    public String getEmail(){return this.email;}
+    public ArrayList<Disciplina> getDici(){return this.disciplinas;}
+
+    public void setNome(){this.nome = JOptionPane.showInputDialog("Nome do aluno");}
+    public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
     public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
     
     public void setDici(){
@@ -20,15 +27,25 @@ public class Aluno extends Pessoa{
     ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
     int opint = op.hashCode();
-    for(int i=0;i<opint;i++){
+    for(int i=0;i<opint;i++)
+    {
         disciplina.setNomeDisciplina();
         disciplina.setNota();
         disciplina.setNomeprofessor();
-        disciplinas.add(disciplina);
-    }
-    this.disciplinas = disciplinas;
-    }
+        disciplina.add(disciplina);
 
+    }
+}
+    Object ListagemDici(ArrayList<Disciplina> listDici)
+    {
+        Object[] d = new String[9];
+        for(int i = 0; i < listDici.size(); i++)
+        {
+           d[i]  = listDici.get(i).getNomeDisciplina(); 
+        } 
+        Object opt_dici = JOptionPane.showInputDialog(null, "Escolha a disciplinas que deseja remover", "Disciplinas", JOptionPane.INFORMATION_MESSAGE, null, d, d[0]);
+        return opt_dici;
+    }
     Object ListagemAlunos(ArrayList<Aluno> listAlun)
     {
         Object[] al = new String[100] ;
@@ -48,13 +65,21 @@ public class Aluno extends Pessoa{
                 "\nMatricula: " + this.matricula +
                 "\nEmail: " + this.email);
         
-        for(int i=0;i<this.disciplinas.size();i++){
-            int aux=i+1;
-            JOptionPane.showMessageDialog(null,"Disciplina "+aux+": "+this.disciplinas.get(i).getNomeDisciplina() +
-            "\nNome do Professor: " + this.disciplinas.get(i).getNomeprofessor() +
-            "\nNota: " + this.disciplinas.get(i).getNota());
+        if(this.disciplinas == null)
+        {
+            JOptionPane.showMessageDialog(null,"Sem disciplinas matriculadas !\nEscolha a opção 'Adicionar disciplinas' para cadastrar");
+            return ;
+        }
+        else{
+            for(int i=0;i<this.disciplinas.size();i++){
+                int aux=i+1;
+                JOptionPane.showMessageDialog(null,"Disciplina "+aux+": "+this.disciplinas.get(i).getNomeDisciplina() +
+                "\nNome do Professor: " + this.disciplinas.get(i).getNomeprofessor() +
+                "\nNota: " + this.disciplinas.get(i).getNota());
         }
     }
+    }
 }
+
 
 
