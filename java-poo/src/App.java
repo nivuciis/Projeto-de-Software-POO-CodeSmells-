@@ -7,6 +7,7 @@ public class App {
         ArrayList<Professor> Professores = new ArrayList<Professor>();
         Aluno mat = new Aluno();
         Professor prof = new Professor();
+        Pessoa pes = new Pessoa();
         while(true){
             Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Adicionar Notas", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
             
@@ -17,6 +18,7 @@ public class App {
                     novoAluno.setCPF();
                     novoAluno.setMatricula();
                     novoAluno.setEmail();
+                    pes.setNumAlunos();
                     Alunos.add(novoAluno);
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
             }else if(op == "Remover Aluno")
@@ -49,6 +51,7 @@ public class App {
                 novoProfessor.setEmail();
                 novoProfessor.setSalario();
                 novoProfessor.setFormacaoAcademica();
+                pes.setNumProf();
                 Professores.add(novoProfessor);
                 JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso.");
 
@@ -58,7 +61,7 @@ public class App {
 
             }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
             {
-                Object [] aluno_prof = {"ALUNO", "PROFESSOR"};
+                Object [] aluno_prof = {"ALUNO", "PROFESSOR","DADOS GERAIS"};
                 Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
                 if (op_aluno_prof == "ALUNO"){ 
                     Object opt_alunos = mat.ListagemAlunos(Alunos);
@@ -83,6 +86,8 @@ public class App {
                         }
                     }    
                 
+                }else if(op_aluno_prof == "DADOS GERAIS"){
+                    pes.MostrarInfo();
                 }
                 
             }else if(op== "Undo/redo")

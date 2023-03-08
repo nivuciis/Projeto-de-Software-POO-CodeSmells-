@@ -4,13 +4,32 @@ public class Pessoa{
     public String nome;
     public String cpf;
     public String email;
+    private int num_alunos;
+    private int num_professores;
+
 
     public String getNome(){return this.nome;}
     public String getCpf(){return this.cpf;}
     public String getEmail(){return this.email;}
+    public int getnum_Alunos(){return this.num_alunos;}
+    public int getnum_Professores(){return this.num_professores;}
+
 
     public void setNome(){this.nome = JOptionPane.showInputDialog("Nome");}
     public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
     public void setEmail(){this.email = JOptionPane.showInputDialog("Email");}
+    public void setNumProf(){this.num_professores=this.num_professores+1;}
+    public void setNumAlunos(){this.num_alunos=this.num_alunos+1;}
+
+    
+    void MostrarInfo()
+    {
+        int tamanho_prof = getnum_Professores();
+        int tamanho_alunos = getnum_Alunos();
+
+        JOptionPane.showMessageDialog(null,"Número de Professores Cadastrados: " + tamanho_prof + 
+                "\nNúmero de Alunos Cadastrados: " + tamanho_alunos);
+    }
+    
     
 }

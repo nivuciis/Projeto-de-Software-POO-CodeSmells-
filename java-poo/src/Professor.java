@@ -23,7 +23,8 @@ public class Professor extends Pessoa{
         Object opt_professors = JOptionPane.showInputDialog(null,"Escolha um Professor","Professores", JOptionPane.INFORMATION_MESSAGE, null, al, al[0]);
         return opt_professors;
     }
-
+    
+    @Override
     void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 
