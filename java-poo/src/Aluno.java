@@ -19,22 +19,23 @@ public class Aluno extends Pessoa{
     public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
     public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
     
-    public void setDici(){
+    public void setDici(ArrayList<Professor> Professores){
 
     Object[] options = {1,2,3,4,5,6,7,8,9};
     Object op = JOptionPane.showInputDialog(null,"Escolha quantas disciplinas deseja cadastrar:","Opções",JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
     Disciplina disciplina= new Disciplina();
-    ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
+    ArrayList<Disciplina> disci = new ArrayList<Disciplina>();
 
     int opint = op.hashCode();
     for(int i=0;i<opint;i++)
     {
         disciplina.setNomeDisciplina();
         disciplina.setNota();
-        disciplina.setNomeprofessor();
-        disciplina.add(disciplina);
+        disciplina.setProfessor(Professores);
+        disci.add(disciplina);
 
     }
+    this.disciplinas = disci;
 }
     Object ListagemDici(ArrayList<Disciplina> listDici)
     {

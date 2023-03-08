@@ -6,6 +6,7 @@ public class App {
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
         ArrayList<Professor> Professores = new ArrayList<Professor>();
         Aluno mat = new Aluno();
+        Professor prof = new Professor();
         while(true){
             Object[] options = {"Matricular Aluno","Remover Aluno", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Adicionar Notas", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
             
@@ -57,18 +58,34 @@ public class App {
 
             }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
             {
-                Object opt_alunos = mat.ListagemAlunos(Alunos);
-                for(int i = 0; i < Alunos.size(); i++)
-                {
-                    if(opt_alunos == null) {break;}
-                    else if(opt_alunos == Alunos.get(i).getNome())
+                Object [] aluno_prof = {"ALUNO", "PROFESSOR"};
+                Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
+                if (op_aluno_prof == "ALUNO"){ 
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
                     {
-                        Alunos.get(i).MostrarInfo();
-                        break;
-                    }
-                }    
-
-            }else if(op== "Undo/redo")3
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos.get(i).MostrarInfo();
+                            break;
+                        }
+                    }    
+                }else if(op_aluno_prof == "PROFESSOR"){
+                    Object opt_professor = prof.ListagemProfessor(Professores);
+                    for(int i = 0; i < Professores.size(); i++)
+                    {
+                        if(opt_professor == null) {break;}
+                        else if(opt_professor == Professores.get(i).getNome())
+                        {
+                            Professores.get(i).MostrarInfo();
+                            break;
+                        }
+                    }    
+                
+                }
+                
+            }else if(op== "Undo/redo")
             {
                 break;
 
@@ -80,7 +97,7 @@ public class App {
                     if(opt_alunos == null) {break;}
                     else if(opt_alunos == Alunos.get(i).getNome())
                     {
-                        Alunos.get(i).setDici();
+                        Alunos.get(i).setDici(Professores);
                         break;
                     }
                 }    

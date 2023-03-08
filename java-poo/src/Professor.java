@@ -13,15 +13,23 @@ public class Professor extends Pessoa{
     public void setSalario(){this.salario = JOptionPane.showInputDialog("Salario deste professor");}
     public void setFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor");}
 
-    String ListagemProfessores(ArrayList<Professor> listProfs)
+    Object ListagemProfessor(ArrayList<Professor> listprof)
     {
         Object[] al = new String[100] ;
-        for(int i = 0; i < listProfs.size(); i++)
+        for(int i = 0; i < listprof.size(); i++)
         {
-            al[i] = listProfs.get(i).nome;
+            al[i] = listprof.get(i).nome;
         }
-        Object opt_prof = JOptionPane.showInputDialog(null,"Escolha um Professor","Professores", JOptionPane.INFORMATION_MESSAGE, null, al, al[0]);
-        
-        return opt_prof;
+        Object opt_professors = JOptionPane.showInputDialog(null,"Escolha um Professor","Professores", JOptionPane.INFORMATION_MESSAGE, null, al, al[0]);
+        return opt_professors;
+    }
+
+    void MostrarInfo()
+    {
+        JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 
+                "\nCPF: " + this.cpf +
+                "\nEmail: " + this.email +
+                "\nSalário: " + this.salario +
+                "\nFormação Acadêmica: " + this.formacaoAcademica);
     }
 }
