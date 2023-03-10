@@ -21,6 +21,9 @@ public class Pessoa{
     public void setNumProf(){this.num_professores=this.num_professores+1;}
     public void setNumAlunos(){this.num_alunos=this.num_alunos+1;}
 
+    public void delNumProf(){this.num_professores=this.num_professores-1;}
+    public void delNumAlunos(){this.num_alunos=this.num_alunos-1;}
+
     
     void MostrarInfo()
     {

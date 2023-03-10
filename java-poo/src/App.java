@@ -23,17 +23,38 @@ public class App {
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
             }else if(op == "Remover Pessoa")
             {
-                Object opt_alunos = mat.ListagemAlunos(Alunos);
-                for(int i = 0; i < Alunos.size(); i++)
-                {
-                    if(opt_alunos == null) {break;}
-                    else if(opt_alunos == Alunos.get(i).getNome())
+                Object [] alunoprof = {"ALUNO", "PROFESSOR"};
+                Object opalunoprof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, alunoprof, alunoprof[0]);
+
+                if(opalunoprof=="ALUNO"){
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
                     {
-                        Alunos = deleteAluno(Alunos,i);
-                        JOptionPane.showMessageDialog(null, "Aluno Excluído com sucesso.");
-                        break;
-                    }
-                }    
+    
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos = deleteAluno(Alunos,i);
+                            JOptionPane.showMessageDialog(null, "Aluno Excluído com sucesso.");
+                            pes.delNumAlunos();
+                            break;
+                        }
+                    }    
+                }else if(opalunoprof=="PROFESSOR"){
+                    Object opt_professor = prof.ListagemProfessor(Professores);
+                    for(int i = 0; i < Professores.size(); i++)
+                    {
+                        if(opt_professor == null) {break;}
+                        else if(opt_professor == Professores.get(i).getNome())
+                        {
+                            Professores = deleteProfessor(Professores, i);
+                            JOptionPane.showMessageDialog(null, "Professor Excluído com sucesso.");
+                            pes.delNumProf();
+                            break;
+                        }
+                    }    
+                }
+                
 
             }else if(op == "Adicionar Notas")
             {
@@ -141,6 +162,12 @@ public class App {
         Alunos.remove(aluno_remover);
         return Alunos;
     }
+
+    public static ArrayList<Professor> deleteProfessor(ArrayList<Professor> Professores,int prof_remover){
+        Professores.remove(prof_remover);
+        return Professores;
+    }
+    
 }
 
 
