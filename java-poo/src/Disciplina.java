@@ -12,11 +12,8 @@ public class Disciplina {
     public String getNota(){return this.nota;}
     public String getNomeprofessor(){return this.profe.getNome();}
 
-Scanner input = new Scanner(System.in);
-
     public void setNomeDisciplina(){
         this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
-
     }
     public void setNota(){
         this.nota = JOptionPane.showInputDialog("Digite a nota da disciplina:");
@@ -27,7 +24,7 @@ Scanner input = new Scanner(System.in);
         Object opt_professor = prof.ListagemProfessor(Professores);
         for(int i = 0; i < Professores.size(); i++)
         {
-            if(opt_professor == null) {break;}
+            if(opt_professor == null){break;}
             else if(opt_professor == Professores.get(i).getNome())
             {
                 this.profe=Professores.get(i);

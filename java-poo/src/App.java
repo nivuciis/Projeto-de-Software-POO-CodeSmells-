@@ -18,10 +18,11 @@ public class App {
                     novoAluno.setCPF();
                     novoAluno.setMatricula();
                     novoAluno.setEmail();
+                    novoAluno.setCurso();
                     pes.setNumAlunos();
                     Alunos.add(novoAluno);
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
-            }else if(op == "Remover Pessoa")
+            }else if(op == "Remover Pessoa")//2.Remover um Aluno ou Professor do Sistema
             {
                 Object [] alunoprof = {"ALUNO", "PROFESSOR"};
                 Object opalunoprof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, alunoprof, alunoprof[0]);
@@ -58,13 +59,13 @@ public class App {
 
             }else if(op == "Adicionar Notas")
             {
-                break;
 
+                break;
             }else if(op == "Alterar Nota")
             {
                 break;
 
-            }else if(op == "Adicionar Professor")
+            }else if(op == "Adicionar Professor") // 5.Adiciona um professor no sistema
             {
                 Professor novoProfessor = new Professor();
                 novoProfessor.setNome();
@@ -76,11 +77,66 @@ public class App {
                 Professores.add(novoProfessor);
                 JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso.");
 
-            }else if(op == "Alterar Dados")
+            }else if(op == "Alterar Dados")//6.Altera os dados de um Aluno ou Professor
             {
-                break;
+                Object [] aluno_prof = {"ALUNO", "PROFESSOR"};
+                Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
+                if(op_aluno_prof == "ALUNO"){
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Object[] dados_aluno = {"Nome","CPF","Email","Número de Matricula","Disciplinas", "Curso"};
+                            Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_aluno,dados_aluno[0]);
+                            if(dado_selecionado == "Nome"){Alunos.get(i).setNome();}
+                            else if(dado_selecionado == "CPF"){Alunos.get(i).setCPF();}
+                            else if(dado_selecionado == "Email"){Alunos.get(i).setEmail();}
+                            else if(dado_selecionado == "Número de Matricula"){Alunos.get(i).setMatricula();}
+                            else if(dado_selecionado == "Curso"){Alunos.get(i).setCurso();}
+                            else if(dado_selecionado == "Disciplinas")
+                            {
+                                ArrayList<Disciplina> d  = Alunos.get(i).getDici();
+                                Object opt_d = Alunos.get(i).ListagemDici(d);                                
+                                for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                                {
+                                    if(opt_d == null) {break;}
+                                    else if(opt_d == d.get(j).getNomeDisciplina())
+                                    {
+                                        Object[] opcoes = {"Nome da disciplina", "Professor responsável", "Nota"};
+                                        Object opcaoSelecionada = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+                                        if(opcaoSelecionada == "Nome da disciplina"){d.get(j).setNomeDisciplina();}
+                                        else if(opcaoSelecionada == "Nota"){d.get(j).setNota();}
+                                        else if(opcaoSelecionada == "Professor responsável"){d.get(j).setProfessor(Professores);}
+                                        break;
+                                    }
+                                }   
+                            }
+                            break;
+                        }
+                    }  
+                }
+                else if(op_aluno_prof == "PROFESSOR"){
+                    Object opt_prof = prof.ListagemProfessor(Professores);
+                    for(int i = 0; i < Professores.size(); i++)
+                    {
+                        if(opt_prof == null) {break;}
+                        else if(opt_prof == Professores.get(i).getNome())
+                        {
+                            Object[] dados_prof = {"Nome","CPF","Email","Salário", "Formação acadêmica"};
+                            Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_prof,dados_prof[0]);
+                            if(dado_selecionado == "Nome"){Professores.get(i).setNome();}
+                            else if(dado_selecionado == "CPF"){Professores.get(i).setCPF();}
+                            else if(dado_selecionado == "Email"){Professores.get(i).setEmail();}
+                            else if(dado_selecionado == "Salário"){Professores.get(i).setSalario();}
+                            else if(dado_selecionado == "Formação acadêmica"){Professores.get(i).setFormacaoAcademica();}
+                            break;
+                        }
+                    }
+                }
 
-            }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno."
+            }else if(op == "Mostrar Informações") //7.Mostrar informações de um aluno, um professor ou os dados gerais do sistema
             {
                 Object [] aluno_prof = {"ALUNO", "PROFESSOR","DADOS GERAIS"};
                 Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
@@ -115,20 +171,25 @@ public class App {
             {
                 break;
 
-            }else if(op == "Adicionar Disciplinas")
+            }else if(op == "Adicionar Disciplinas")//9.Adiciona uma determinada quantidade de disciplinas para um aluno
             {
-                Object opt_alunos = mat.ListagemAlunos(Alunos);
-                for(int i = 0; i < Alunos.size(); i++)
+                if(Professores.size() != 0)
                 {
-                    if(opt_alunos == null) {break;}
-                    else if(opt_alunos == Alunos.get(i).getNome())
+                    Object opt_alunos = mat.ListagemAlunos(Alunos);
+                    for(int i = 0; i < Alunos.size(); i++)
                     {
-                        Alunos.get(i).setDici(Professores);
-                        break;
-                    }
-                }    
-
-            }else if(op == "Remover Disciplinas")
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == Alunos.get(i).getNome())
+                        {
+                            Alunos.get(i).setDici(Professores);
+                            break;
+                        }
+                    }    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não há nenhum professor no sistema!" +
+                                         "\nCadastre um professor antes de adicionar disciplinas");
+                }
+            }else if(op == "Remover Disciplinas")//10.Remove uma determinada disciplina que um aluno está matriculado
                 {
                     Object opt_alunos = mat.ListagemAlunos(Alunos);
                     for(int i = 0; i < Alunos.size(); i++)//navegar pelos alunos
