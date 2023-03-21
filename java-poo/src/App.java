@@ -9,7 +9,7 @@ public class App {
         Professor prof = new Professor();
         Pessoa pes = new Pessoa();
         while(true){
-            Object[] options = {"Matricular Aluno","Remover Pessoa", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Adicionar Notas", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
+            Object[] options = {"Matricular Aluno","Remover Pessoa", "Alterar Nota","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
             
             Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             if(op=="Matricular Aluno"){ // 1.Matricular um aluno no sistema."
@@ -56,11 +56,6 @@ public class App {
                     }    
                 }
                 
-
-            }else if(op == "Adicionar Notas")
-            {
-
-                break;
             }else if(op == "Alterar Nota")
             {
                 break;
