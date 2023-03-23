@@ -14,7 +14,7 @@ public class Aluno extends Pessoa{
     
     public String getEmail(){return this.email;}
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
-
+    
     public void setNome(){this.nome = JOptionPane.showInputDialog("Nome do aluno");}
     public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
     public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
@@ -42,6 +42,10 @@ public class Aluno extends Pessoa{
     }
     Object ListagemDici(ArrayList<Disciplina> listDici)
     {
+        if(listDici.size()==0){
+            JOptionPane.showMessageDialog(null, "Ainda não existe Professores Cadastrados, acesse a opção ADICIONAR PROFESSOR para Cadastrar");
+            return null;
+        }
         Object[] d = new String[9];
         for(int i = 0; i < listDici.size(); i++)
         {
@@ -52,6 +56,10 @@ public class Aluno extends Pessoa{
     }
     Object ListagemAlunos(ArrayList<Aluno> listAlun)
     {
+        if(listAlun.size()==0){
+            JOptionPane.showMessageDialog(null, "Ainda não existe Alunos Cadastrados, acesse a opção MATRICULAR ALUNO para Cadastrar.");
+            return null;
+        }
         Object[] al = new String[100] ;
         for(int i = 0; i < listAlun.size(); i++)
         {
