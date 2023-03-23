@@ -104,6 +104,8 @@ public class App {
                                     }
                                 }   
                             }
+                            JOptionPane.showMessageDialog(null, "Dados Atualizados com sucesso.");
+
                             break;
                         }
                     }  
@@ -173,6 +175,8 @@ public class App {
                         else if(opt_alunos == Alunos.get(i).getNome())
                         {
                             Alunos.get(i).setDici(Professores);
+                             JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso.");
+                            
                             break;
                         }
                     }    
@@ -196,6 +200,8 @@ public class App {
                                 else if(opt_d == d.get(j).getNomeDisciplina())
                                 {
                                     d.remove(j);
+                                    JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso.");
+
                                     break;
                                 }
                             }

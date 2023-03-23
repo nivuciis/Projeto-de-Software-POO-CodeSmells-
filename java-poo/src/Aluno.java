@@ -43,7 +43,7 @@ public class Aluno extends Pessoa{
     Object ListagemDici(ArrayList<Disciplina> listDici)
     {
         if(listDici.size()==0){
-            JOptionPane.showMessageDialog(null, "Ainda não existe Professores Cadastrados, acesse a opção ADICIONAR PROFESSOR para Cadastrar");
+            JOptionPane.showMessageDialog(null, "Ainda não existe Disciplinas Cadastrados, acesse a opção ADICIONAR DISCIPLINA para Cadastrar");
             return null;
         }
         Object[] d = new String[9];

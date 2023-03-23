@@ -15,6 +15,10 @@ public class Professor extends Pessoa{
 
     Object ListagemProfessor(ArrayList<Professor> listprof)
     {
+        if(listprof.size()==0){
+            JOptionPane.showMessageDialog(null, "Ainda não existe Professores Cadastrados, acesse a opção ADICIONAR PROFESSOR para Cadastrar");
+            return null;
+        }
         Object[] al = new String[100] ;
         for(int i = 0; i < listprof.size(); i++)
         {
