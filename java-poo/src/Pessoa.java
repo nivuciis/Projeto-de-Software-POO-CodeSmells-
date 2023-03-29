@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class Pessoa{
+public class Pessoa extends Padrao{
     public String nome;
     public String cpf;
     public String email;
@@ -25,7 +25,7 @@ public class Pessoa{
     public void delNumAlunos(){this.num_alunos=this.num_alunos-1;}
 
     
-    void MostrarInfo()
+    public void MostrarInfo()
     {
         int tamanho_prof = getnum_Professores();
         int tamanho_alunos = getnum_Alunos();

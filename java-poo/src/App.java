@@ -8,7 +8,7 @@ public class App {
         Aluno mat = new Aluno();
         Professor prof = new Professor();
         Pessoa pes = new Pessoa();
-        while(true){
+        while(true){ 
             Object[] options = {"Matricular Aluno","Remover Pessoa","Alterar Dados", "Mostrar Informações", "Adicionar Professor", "Undo/redo ", "Adicionar Disciplinas", "Remover Disciplinas"};
             
             Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
@@ -194,17 +194,19 @@ public class App {
                         {
                             ArrayList<Disciplina> d  = Alunos.get(i).getDici(); 
                             Object opt_d = Alunos.get(i).ListagemDici(d);
-                            for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
-                            {
-                                if(opt_d == null) {break;}
-                                else if(opt_d == d.get(j).getNomeDisciplina())
+                            if(d!=null){
+                                for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
                                 {
-                                    d.remove(j);
-                                    JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso.");
+                                    if(opt_d == null) {break;}
+                                    else if(opt_d == d.get(j).getNomeDisciplina())
+                                    {
+                                        d.remove(j);
+                                        JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso.");
 
-                                    break;
+                                        break;
+                                    }
                                 }
-                            }
+                            }else{continue;}
                             break;
                         }
                     }

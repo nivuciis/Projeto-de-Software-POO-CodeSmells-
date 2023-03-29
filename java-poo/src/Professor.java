@@ -29,7 +29,7 @@ public class Professor extends Pessoa{
     }
     
     @Override
-    void MostrarInfo()
+    public void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 
                 "\nCPF: " + this.cpf +

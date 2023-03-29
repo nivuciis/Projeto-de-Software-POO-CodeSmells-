@@ -15,8 +15,7 @@ public class Aluno extends Pessoa{
     public String getEmail(){return this.email;}
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
     
-    public void setNome(){this.nome = JOptionPane.showInputDialog("Nome do aluno");}
-    public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
+    
     public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
     public void setCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso");}
     
@@ -42,17 +41,22 @@ public class Aluno extends Pessoa{
     }
     Object ListagemDici(ArrayList<Disciplina> listDici)
     {
-        if(listDici.size()==0){
-            JOptionPane.showMessageDialog(null, "Ainda não existe Disciplinas Cadastrados, acesse a opção ADICIONAR DISCIPLINA para Cadastrar");
-            return null;
+        if(listDici!=null){
+            if(listDici.size()==0){
+                JOptionPane.showMessageDialog(null, "Ainda não existe Disciplinas Cadastrados, acesse a opção ADICIONAR DISCIPLINA para Cadastrar");
+                return null;
+            }
+            Object[] d = new String[9];
+            for(int i = 0; i < listDici.size(); i++)
+            {
+            d[i]  = listDici.get(i).getNomeDisciplina(); 
+            } 
+            Object opt_dici = JOptionPane.showInputDialog(null, "Escolha uma das disciplinas abaixo", "Disciplinas", JOptionPane.INFORMATION_MESSAGE, null, d, d[0]);
+            return opt_dici;
+        }else{
+            JOptionPane.showMessageDialog(null, "Ainda não existe Disciplinas Vinculadas a este aluno");
+            return 0;
         }
-        Object[] d = new String[9];
-        for(int i = 0; i < listDici.size(); i++)
-        {
-           d[i]  = listDici.get(i).getNomeDisciplina(); 
-        } 
-        Object opt_dici = JOptionPane.showInputDialog(null, "Escolha uma das disciplinas abaixo", "Disciplinas", JOptionPane.INFORMATION_MESSAGE, null, d, d[0]);
-        return opt_dici;
     }
     Object ListagemAlunos(ArrayList<Aluno> listAlun)
     {
@@ -70,7 +74,7 @@ public class Aluno extends Pessoa{
     }
 
     @Override
-    void MostrarInfo()
+    public void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 
                 "\nCPF: " + this.cpf +
