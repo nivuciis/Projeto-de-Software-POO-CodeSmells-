@@ -11,13 +11,18 @@ public class Aluno extends Pessoa{
 
     public String getMatricula(){return this.matricula;}
     public String getNome(){return this.nome;}
+    public String getCurso(){return this.curso;}
     
     public String getEmail(){return this.email;}
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
     
     
     public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
+    public void resetMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno",getMatricula());}
+
     public void setCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso");}
+    public void resetCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso",getCurso());}
+
     
     public void setDici(ArrayList<Professor> Professores){
 

@@ -11,7 +11,11 @@ public class Professor extends Pessoa{
     public String getFormacaoAcademica(){return this.formacaoAcademica;}
 
     public void setSalario(){this.salario = JOptionPane.showInputDialog("Salario deste professor");}
+    public void resetSalario(){this.salario = JOptionPane.showInputDialog("Salario deste professor",getSalario());}
+
     public void setFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor");}
+    public void resetFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor",getFormacaoAcademica());}
+
 
     Object ListagemProfessor(ArrayList<Professor> listprof)
     {

@@ -81,11 +81,11 @@ public class App {
                         {
                             Object[] dados_aluno = {"Nome","CPF","Email","Número de Matricula","Disciplinas", "Curso"};
                             Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_aluno,dados_aluno[0]);
-                            if(dado_selecionado == "Nome"){Alunos.get(i).setNome();}
-                            else if(dado_selecionado == "CPF"){Alunos.get(i).setCPF();}
-                            else if(dado_selecionado == "Email"){Alunos.get(i).setEmail();}
-                            else if(dado_selecionado == "Número de Matricula"){Alunos.get(i).setMatricula();}
-                            else if(dado_selecionado == "Curso"){Alunos.get(i).setCurso();}
+                            if(dado_selecionado == "Nome"){Alunos.get(i).resetNome();}
+                            else if(dado_selecionado == "CPF"){Alunos.get(i).resetCPF();}
+                            else if(dado_selecionado == "Email"){Alunos.get(i).resetEmail();}
+                            else if(dado_selecionado == "Número de Matricula"){Alunos.get(i).resetMatricula();}
+                            else if(dado_selecionado == "Curso"){Alunos.get(i).resetCurso();}
                             else if(dado_selecionado == "Disciplinas")
                             {
                                 ArrayList<Disciplina> d  = Alunos.get(i).getDici();
@@ -97,8 +97,8 @@ public class App {
                                     {
                                         Object[] opcoes = {"Nome da disciplina", "Professor responsável", "Nota"};
                                         Object opcaoSelecionada = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
-                                        if(opcaoSelecionada == "Nome da disciplina"){d.get(j).setNomeDisciplina();}
-                                        else if(opcaoSelecionada == "Nota"){d.get(j).setNota();}
+                                        if(opcaoSelecionada == "Nome da disciplina"){d.get(j).resetNomeDisciplina();}
+                                        else if(opcaoSelecionada == "Nota"){d.get(j).resetNota();}
                                         else if(opcaoSelecionada == "Professor responsável"){d.get(j).setProfessor(Professores);}
                                         break;
                                     }
@@ -119,11 +119,11 @@ public class App {
                         {
                             Object[] dados_prof = {"Nome","CPF","Email","Salário", "Formação acadêmica"};
                             Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_prof,dados_prof[0]);
-                            if(dado_selecionado == "Nome"){Professores.get(i).setNome();}
-                            else if(dado_selecionado == "CPF"){Professores.get(i).setCPF();}
-                            else if(dado_selecionado == "Email"){Professores.get(i).setEmail();}
-                            else if(dado_selecionado == "Salário"){Professores.get(i).setSalario();}
-                            else if(dado_selecionado == "Formação acadêmica"){Professores.get(i).setFormacaoAcademica();}
+                            if(dado_selecionado == "Nome"){Professores.get(i).resetNome();}
+                            else if(dado_selecionado == "CPF"){Professores.get(i).resetCPF();}
+                            else if(dado_selecionado == "Email"){Professores.get(i).resetEmail();}
+                            else if(dado_selecionado == "Salário"){Professores.get(i).resetSalario();}
+                            else if(dado_selecionado == "Formação acadêmica"){Professores.get(i).resetFormacaoAcademica();}
                             break;
                         }
                     }

@@ -16,8 +16,12 @@ public class Pessoa extends Padrao{
 
 
     public void setNome(){this.nome = JOptionPane.showInputDialog("Nome");}
+    public void resetNome(){this.nome = JOptionPane.showInputDialog("Nome",getNome());}
     public void setCPF(){this.cpf = JOptionPane.showInputDialog("CPF");}
+    public void resetCPF(){this.cpf = JOptionPane.showInputDialog("CPF",getCpf());}
     public void setEmail(){this.email = JOptionPane.showInputDialog("Email");}
+    public void resetEmail(){this.email = JOptionPane.showInputDialog("Email",getEmail());}
+    
     public void setNumProf(){this.num_professores=this.num_professores+1;}
     public void setNumAlunos(){this.num_alunos=this.num_alunos+1;}
 

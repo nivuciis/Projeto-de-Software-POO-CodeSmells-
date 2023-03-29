@@ -14,8 +14,15 @@ public class Disciplina {
     public void setNomeDisciplina(){
         this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:");
     }
+    public void resetNomeDisciplina(){
+        this.nomedisciplina = JOptionPane.showInputDialog("Nome da disciplina:",getNomeDisciplina());
+    }
+
     public void setNota(){
         this.nota = JOptionPane.showInputDialog("Digite a nota da disciplina:");
+    }
+    public void resetNota(){
+        this.nota = JOptionPane.showInputDialog("Digite a nota da disciplina:",getNota());
     }
 
     public void setProfessor(ArrayList<Professor> Professores){
@@ -30,7 +37,5 @@ public class Disciplina {
                 break;
             }
         }
-
-
 }
 }
