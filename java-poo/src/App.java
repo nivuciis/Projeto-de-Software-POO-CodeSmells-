@@ -5,6 +5,7 @@ public class App {
     public static void main(String[] args){
         ArrayList<Aluno> Alunos = new ArrayList<Aluno>();
         ArrayList<Professor> Professores = new ArrayList<Professor>();
+        ArrayList<Pessoa> Pessoas = new ArrayList<Pessoa>();
         Aluno mat = new Aluno();
         Professor prof = new Professor();
         Pessoa pes = new Pessoa();
@@ -22,6 +23,7 @@ public class App {
                     novoAluno.setCurso();
                     pes.setNumAlunos();
                     Alunos.add(novoAluno);
+                    Pessoas.add(novoAluno);
                     JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
             }else if(op == "Remover Pessoa")//2.Remover um Aluno ou Professor do Sistema
             {
@@ -66,6 +68,7 @@ public class App {
                 novoProfessor.setFormacaoAcademica();
                 pes.setNumProf();
                 Professores.add(novoProfessor);
+                Pessoas.add(novoProfessor);
                 JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso.");
 
             }else if(op == "Alterar Dados")//6.Altera os dados de um Aluno ou Professor
@@ -135,23 +138,23 @@ public class App {
                 Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
                 if (op_aluno_prof == "ALUNO"){ 
                     Object opt_alunos = mat.ListagemAlunos(Alunos);
-                    for(int i = 0; i < Alunos.size(); i++)
+                    for(int i = 0; i < Pessoas.size(); i++)
                     {
                         if(opt_alunos == null) {break;}
-                        else if(opt_alunos == Alunos.get(i).getNome())
+                        else if(opt_alunos == Pessoas.get(i).getNome())
                         {
-                            Alunos.get(i).MostrarInfo();
+                            Pessoas.get(i).MostrarInfo();
                             break;
                         }
                     }    
                 }else if(op_aluno_prof == "PROFESSOR"){
                     Object opt_professor = prof.ListagemProfessor(Professores);
-                    for(int i = 0; i < Professores.size(); i++)
+                    for(int i = 0; i < Pessoas.size(); i++)
                     {
                         if(opt_professor == null) {break;}
-                        else if(opt_professor == Professores.get(i).getNome())
+                        else if(opt_professor == Pessoas.get(i).getNome())
                         {
-                            Professores.get(i).MostrarInfo();
+                            Pessoas.get(i).MostrarInfo();
                             break;
                         }
                     }    
