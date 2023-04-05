@@ -10,7 +10,6 @@ public class Aluno extends Pessoa{
 
 
     public String getMatricula(){return this.matricula;}
-    public String getNome(){return this.nome;}
     public String getCurso(){return this.curso;}
     
     public String getEmail(){return this.email;}
