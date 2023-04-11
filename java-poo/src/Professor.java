@@ -3,15 +3,51 @@ import java.util.ArrayList;
 
 public class Professor extends Pessoa{
     
-    private String salario;
+    private Double salario;
     private String formacaoAcademica;
 
 
-    public String getSalario(){return this.salario;}
+    public Double getSalario(){return this.salario;}
     public String getFormacaoAcademica(){return this.formacaoAcademica;}
 
-    public void setSalario(){this.salario = JOptionPane.showInputDialog("Salario deste professor");}
-    public void resetSalario(){this.salario = JOptionPane.showInputDialog("Salario deste professor",getSalario());}
+    public void setSalario(){
+        Float numero = null;
+        while (numero == null) {
+            String input = JOptionPane.showInputDialog("Digite o salário deste professor:");
+            if (input == null) {
+                this.salario = 0.0;
+                break;
+            }
+             else {
+                try {
+                    Double salario = Double.parseDouble(input);
+                    this.salario = salario;
+                    break; // sair do loop
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Por favor, insira um salário válido.");
+                }
+            }
+    }
+    }
+    public void resetSalario(){
+        Float numero = null;
+    while (numero == null) {
+        String input = JOptionPane.showInputDialog("Digite o salário deste professor:",getSalario());
+        if (input == null) {
+            this.salario = getSalario();
+            break;
+        }
+         else {
+            try {
+                Double salario = Double.parseDouble(input);
+                this.salario = salario;
+                break; // sair do loop
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, insira um salário válido.");
+            }
+        }
+}
+}
 
     public void setFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor");}
     public void resetFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor",getFormacaoAcademica());}

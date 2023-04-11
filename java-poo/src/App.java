@@ -64,8 +64,10 @@ public class App {
                 Professor novoProfessor = new Professor();
                 novoProfessor.setNome();
                 novoProfessor.setCPF();
+                if(novoProfessor.getCpf()==0){continue;}
                 novoProfessor.setEmail();
                 novoProfessor.setSalario();
+                if(novoProfessor.getSalario()==0.0){continue;}
                 novoProfessor.setFormacaoAcademica();
                 pes.setNumProf();
                 Professores.add(novoProfessor);
