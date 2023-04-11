@@ -4,20 +4,50 @@ import javax.swing.JOptionPane;
 
 public class Aluno extends Pessoa{
 
-    private String matricula;
+    private int matricula;
     public ArrayList<Disciplina> disciplinas;
     private String curso;
 
 
-    public String getMatricula(){return this.matricula;}
+    public int getMatricula(){return this.matricula;}
     public String getCurso(){return this.curso;}
     
     public String getEmail(){return this.email;}
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
     
     
-    public void setMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno");}
-    public void resetMatricula(){this.matricula = JOptionPane.showInputDialog("Numero de matricula do aluno",getMatricula());}
+    public void setMatricula(){
+        Integer numero = null;
+        while (numero == null) {
+            String input = JOptionPane.showInputDialog("Numero de matricula do aluno");
+            if (input == null) {
+                this.matricula = 0;
+                break;
+            }
+            try {
+                numero = Integer.parseInt(input);
+                this.matricula = numero;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, insira um número inteiro válido.");
+            }
+        }
+    }
+    public void resetMatricula(){
+        Integer numero = null;
+        while (numero == null) {
+            String input = JOptionPane.showInputDialog("Numero de matricula do aluno",getMatricula());
+            if (input == null) {
+                this.matricula = getMatricula();
+                break;
+            }
+            try {
+                numero = Integer.parseInt(input);
+                this.matricula = numero;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, insira um número inteiro válido.");
+            }
+        }
+    }
 
     public void setCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso");}
     public void resetCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso",getCurso());}

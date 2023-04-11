@@ -16,9 +16,10 @@ public class App {
             if(op=="Matricular Aluno"){ // 1.Matricular um aluno no sistema."
                     Aluno novoAluno = new Aluno();
                     novoAluno.setNome();
-                    if(novoAluno.getNome()=="cancel"){continue;}
                     novoAluno.setCPF();
+                    if(novoAluno.getCpf()==0){continue;}
                     novoAluno.setMatricula();
+                    if(novoAluno.getMatricula()==0){continue;}
                     novoAluno.setEmail();
                     novoAluno.setCurso();
                     pes.setNumAlunos();
